@@ -3,6 +3,7 @@
           package="com.example.wiliam.raiderssolo">
 
     <application
+            android:name="com.consultaremedios.base.App"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"

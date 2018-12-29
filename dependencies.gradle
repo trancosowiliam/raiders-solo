@@ -1,0 +1,76 @@
+ext {
+    // kotlin
+    coroutines_version = '1.0.1'
+    koin_version = '1.0.2'
+
+    // ui
+    androidx_version = '1.0.2'
+    androidX_support_version = '1.1.0-alpha01'
+    constraint_layout_version = '2.0.0-alpha3'
+    android_material_version = '1.1.0-alpha01'
+    glide_version = '4.8.0'
+
+    // archComponents
+    arch_components_version = '2.0.0'
+
+    // networking
+    okhttp_version = '3.10.0'
+    retrofit_version = '2.4.0'
+    gson_version = '2.8.5'
+
+    // googleServices
+    google_services_version = '16.0.0'
+
+    // testing
+    junit_version = '4.12'
+    espresso_version = '3.1.0'
+    android_testing_version = '1.1.0'
+
+    tools = [
+            minSdkVersion       : 19,
+            compileSdkVersion   : 28,
+            targetSdkVersion    : 28,
+            applicationId       : "com.example.wiliam.raiderssolo",
+            versionCode         : 010,
+            versionName         : "0.1.0"
+    ]
+
+    kotlin = [
+            stdlib              : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+            coroutinesCore      : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+            coroutinesAndroid   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            koin                : "org.koin:koin-android:$koin_version"
+    ]
+
+    ui = [
+            appcompat           : "androidx.appcompat:appcompat:$androidx_version",
+            recyclerview        : "androidx.recyclerview:recyclerview:$androidX_support_version",
+            fragment            : "androidx.fragment:fragment:$androidX_support_version",
+            constraintLayout    : "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+//            androidMaterial     : "com.google.android.material:material:$android_material_version",
+//            glide               : "com.github.bumptech.glide:glide:$glide_version",
+//            rangeSeekBar        : "com.crystal:crystalrangeseekbar:1.1.3"
+    ]
+
+    archComponents = [
+            roomDatabase        : "androidx.room:room-runtime:$arch_components_version",
+            apRoomDatabase      : "androidx.room:room-compiler:$arch_components_version"
+    ]
+
+//    networking = [
+//            loggingInterceptor  : "com.squareup.okhttp3:logging-interceptor:$okhttp_version",
+//            retrofit            : "com.squareup.retrofit2:retrofit:$retrofit_version",
+//            gson                : "com.google.code.gson:gson:$gson_version",
+//            retrofitGson        : "com.squareup.retrofit2:converter-gson:$retrofit_version",
+//    ]
+//
+//    googleServices = [
+//            gmsLocation         : "com.google.android.gms:play-services-location:$google_services_version"
+//    ]
+
+    testing = [
+            junit               : "junit:junit:$junit_version",
+            runner              : "androidx.test:runner:$android_testing_version",
+            espressoCore        : "androidx.test.espresso:espresso-core:$espresso_version"
+    ]
+}

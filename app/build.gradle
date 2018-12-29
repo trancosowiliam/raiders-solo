@@ -1,18 +1,19 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    def tools = rootProject.ext.tools
+    compileSdkVersion tools.compileSdkVersion
+    flavorDimensions "default"
     defaultConfig {
-        applicationId "com.example.wiliam.raiderssolo"
-        minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        applicationId tools.applicationId
+        minSdkVersion tools.minSdkVersion
+        targetSdkVersion tools.targetSdkVersion
+        versionCode tools.versionCode
+        versionName tools.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -23,11 +24,40 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    def kotlin = rootProject.ext.kotlin
+//    def networking = rootProject.ext.networking
+    def archComponents = rootProject.ext.archComponents
+    def ui = rootProject.ext.ui
+//    def googleServices = rootProject.ext.googleServices
+    def testing = rootProject.ext.testing
+
+    // region Kotlin
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation kotlin.stdlib
+    implementation kotlin.coroutinesCore
+    implementation kotlin.coroutinesAndroid
+    implementation kotlin.koin
+
+    // region UI
+    implementation ui.appcompat
+    implementation ui.recyclerview
+    implementation ui.fragment
+    implementation ui.constraintLayout
+//    implementation ui.androidMaterial
+//    implementation ui.glide
+
+    // region Architecture
+    implementation archComponents.roomDatabase
+    kapt archComponents.apRoomDatabase
+
+    // region Networking
+//    implementation networking.loggingInterceptor
+//    implementation networking.retrofit
+//    implementation networking.gson
+//    implementation networking.retrofitGson
+
+    // region Testing
+    testImplementation testing.junit
+    androidTestImplementation testing.runner
+    androidTestImplementation testing.espressoCore
 }
